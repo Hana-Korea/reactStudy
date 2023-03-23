@@ -1,0 +1,37 @@
+$main-color: #3d3dff;
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    background-color: $main-color;
+    @include flex-center();
+    color: white;
+    width: 100px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    &.large {
+        width: 140px;
+        height: 70px;
+        font-size: 24px;
+    }
+    &.medium {
+        width: 120px;
+        height: 60px;
+        font-size: 20px;
+    }
+    &.small {
+        width: 100px;
+        height: 50px;
+        font-size: 16px;
+    }
+    &.red {
+        background-color: red;
+    }
+    &.blue {
+        background-color: blue;
+    }
+}
