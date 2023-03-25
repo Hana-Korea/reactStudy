@@ -1,26 +1,26 @@
-import React, { useReducer, useState } from 'react'
-import Student from '../../Student'
-
-const heavyWork = () => {
-    console.log('힘든일')
-    return ['kang', 'lee']
-}
+import React, { useState } from 'react'
 
 function Students() {
-    const [names, setNames] = useState(() => heavyWork())
-    const [input, setInput] = useState('')
+    const [names, setNames] = useState([])
+    const [newName, setNewName] = useState('')
     const onChange = (e) => {
-        setInput(e.target.value)
+        setNewName(e.target.value)
     }
-    const onClick = () => {
-        setNames([...names, input])
+    const onClick = (e) => {
+        setNames([...names, newName])
+    }
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            onClick()
+        }
     }
     return (
         <div>
-            <input onChange={onChange} value={input} />
+            <h1>출석부</h1>
+            <input value={newName} onChange={onChange} onKeyDown={onKeyPress} />
             <button onClick={onClick}>버튼</button>
-            {names.map((name, i) => (
-                <div key={i}>{name}</div>
+            {names.map((name) => (
+                <div>{name}</div>
             ))}
         </div>
     )
