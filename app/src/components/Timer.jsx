@@ -1,41 +1,18 @@
-/* eslint-disable react/destructuring-assignment */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 function Timer() {
-    const [isClicked, setIsClicked] = useState(false)
-    const [seconds, setSeconds] = useState(60)
-    const countDown = () => {
-        setSeconds(seconds - 1)
-    }
-
     useEffect(() => {
-        if (isClicked) {
-            setTimeout(() => {
-                countDown()
-            }, 1000)
+        const timer = setInterval(() => {
+            console.log('타이머 열일중')
+        }, 1000)
+        return () => {
+            clearInterval(timer)
         }
-    }, [seconds])
+    }, [])
 
     return (
         <div>
-            <div>{seconds}</div>
-            <button
-                onClick={() => {
-                    setIsClicked(true)
-                    setTimeout(() => {
-                        countDown()
-                    }, 1000)
-                }}
-            >
-                타이머시작
-            </button>
-            <button
-                onClick={() => {
-                    setIsClicked(false)
-                }}
-            >
-                타이머중지
-            </button>
+            <h3>타이머를 시작합니다.콘솔창을 보세요!</h3>
         </div>
     )
 }
